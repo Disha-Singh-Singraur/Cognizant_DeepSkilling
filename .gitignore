@@ -1,0 +1,28 @@
+# Node
+node_modules/
+dist/
+.angular/
+
+# Java Compilations
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+target/
+
+# Logs
+*.log
+app.log
+
+# IDE & OS Caches
+.vscode/
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+.factorypath
+Thumbs.db
+Desktop.ini
