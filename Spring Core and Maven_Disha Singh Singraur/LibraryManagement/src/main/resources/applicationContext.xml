@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- Exercise 1, 2, 5: Configure basic beans and Setter Injection -->
+    
+    <!-- 1. Define BookRepository bean -->
+    <bean id="bookRepository" class="com.library.repository.BookRepository" />
+
+    <!-- 2. Define BookService bean using Setter Injection (Exercise 2, 5, 7) -->
+    <bean id="bookServiceSetter" class="com.library.service.BookService">
+        <property name="bookRepository" ref="bookRepository" />
+    </bean>
+
+    <!-- 3. Define BookService bean using Constructor Injection (Exercise 7) -->
+    <bean id="bookServiceConstructor" class="com.library.service.BookService">
+        <constructor-arg ref="bookRepository" />
+    </bean>
+
+    <!-- Exercise 3, 8: Register Aspect and Enable AspectJ Auto-proxying -->
+    
+    <!-- 4. Register LoggingAspect as a bean -->
+    <bean id="loggingAspect" class="com.library.aspect.LoggingAspect" />
+
+    <!-- 5. Enable AspectJ Auto-proxying to process AOP annotations like @Before, @After, @Around -->
+    <aop:aspectj-autoproxy />
+
+</beans>
