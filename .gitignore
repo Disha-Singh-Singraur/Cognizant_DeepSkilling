@@ -11,6 +11,7 @@ dist/
 
 # Maven
 target/
+.mvn/
 
 # Logs
 *.log
