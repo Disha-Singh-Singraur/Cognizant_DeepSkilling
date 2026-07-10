@@ -1,0 +1,15 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: security-demo
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+jwt:
+  secret: mySecretKeyForJwtTokenGenerationWhichShouldBeLongEnough256Bits
+  expiration: 3600000

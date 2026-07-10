@@ -1,0 +1,36 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:h2:mem:userdb;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# MySQL Configuration (To use local MySQL database, uncomment below and comment out H2 above)
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/user_db?createDatabaseIfNotExist=true
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: password
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

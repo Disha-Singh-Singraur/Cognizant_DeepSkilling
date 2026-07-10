@@ -1,0 +1,50 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: example_route
+          uri: http://example.org
+          predicates:
+            - Path=/example/**
+        - id: load_balanced_route
+          uri: lb://example-service
+          predicates:
+            - Path=/loadbalanced/**
+        - id: customer_route
+          uri: lb://customer-service
+          predicates:
+            - Path=/customer-service/**
+          filters:
+            - RewritePath=/customer-service/(?<segment>.*), /$\{segment}
+            - name: CustomRateLimit
+              args:
+                limit: 5
+            - name: CustomCache
+              args:
+                ttlSeconds: 120
+        - id: billing_route
+          uri: lb://billing-service
+          predicates:
+            - Path=/billing-service/**
+          filters:
+            - RewritePath=/billing-service/(?<segment>.*), /$\{segment}
+            - name: CustomRateLimit
+              args:
+                limit: 5
+            - name: CustomCache
+              args:
+                ttlSeconds: 120
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

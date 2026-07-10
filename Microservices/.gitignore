@@ -1,0 +1,28 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.tar.gz
+*.zip
+
+# IDEs and editors
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS metadata
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Log files
+*.log
